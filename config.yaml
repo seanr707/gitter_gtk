@@ -1,0 +1,4 @@
+# Place in current working directory or place in $HOME/.gitter_gtk/
+
+# Get token from https://api.gitter.im
+token = ""

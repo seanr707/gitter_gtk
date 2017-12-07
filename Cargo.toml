@@ -1,0 +1,17 @@
+[package]
+name = "gitter_gtk"
+version = "0.1.0"
+authors = ["Sean <Seanr707@github.com>"]
+
+[dependencies]
+curl = "0.4.8"
+regex = "0.2.2"
+serde_json = "1.0.6"
+serde_derive = "1.0.21"
+serde = "1.0.20"
+yaml-rust = "0.3.*"
+notify-rust = "3.4.*"
+
+[dependencies.gtk]
+version = "0.2.0"
+features = ["v3_10"]
