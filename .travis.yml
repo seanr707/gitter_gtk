@@ -3,8 +3,20 @@ rust:
   - nightly
 cache: cargo
 script:
+  - rustup target add i686-unknown-linux-gnu
+  - rustup target add x86_64-apple-darwin
+  - rustup target add x86_64-unknown-freebsd
+  - rustup target add i686-unknown-linux-gnu
+  - rustup target add armv7-unknown-linux-gnueabihf
+  - cargo build --verbose --release --target=x86_64-unknown-linux-gnu
   - cargo build --verbose --release --target=i686-unknown-linux-gnu
   - cargo build --verbose --release --target=x86_64-apple-darwin
-  - cargo build --verbose --release --target=x86_64-unknown-freebsd
-  - cargo build --verbose --release --target=i686-unknown-linux-gnu
-  - cargo build --verbose --release --target=armv7-unknown-linux-gnueabihf
+  # - cargo build --verbose --release --target=x86_64-unknown-freebsd
+  # - cargo build --verbose --release --target=armv7-unknown-linux-gnueabihf
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: gh-pages
