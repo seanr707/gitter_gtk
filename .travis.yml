@@ -5,7 +5,7 @@ cache: cargo
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get -y install g++ libatk1.0-0 dbus libdbus-1-3 libdbus-glib-1-2 libcogl-pango-dev libpango1.0-dev
+  - sudo apt-get -y install dbus libdbus-1-dev libdbus-glib-1-dev libdbusmenu-gtk3-dev libcogl-pango-dev libpango1.0-dev libatk1.0-dev libatkmm-1.6-dev
 
 script:
   # - rustup target add i686-unknown-linux-gnu
