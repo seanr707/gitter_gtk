@@ -534,6 +534,7 @@ fn notification_thread(receiver: mpsc::Receiver<String>) {
                 .icon("email")
                 .timeout(5000)
                 .show().unwrap()
+                /*
                 .wait_for_action({|action|
                     match action {
                         "default" => {println!("you clicked \"default\"")},
@@ -543,6 +544,7 @@ fn notification_thread(receiver: mpsc::Receiver<String>) {
                         _ => ()
                     }
                 });
+                */
 
             // Prevent multiple notifications filling up too quickly
             let five_secs = std::time::Duration::from_millis(5000);

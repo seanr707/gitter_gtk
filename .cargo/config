@@ -1,0 +1,11 @@
+[target]
+ar = "ar"
+linker = "gcc"
+
+[target.arm-unknown-linux-gnueabihf]
+ar = "arm-linux-gnueabihf-ar"
+linker = "arm-linux-gnueabihf-gcc"
+
+[target.x86_64-pc-windows-gnu]
+ar = "x86_64-w64-mingw32-ar"
+linker = "x86_64-w64-mingw32-gcc"
