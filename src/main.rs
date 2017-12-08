@@ -533,7 +533,7 @@ fn notification_thread(receiver: mpsc::Receiver<String>) {
                 .body(&body[..])
                 .icon("email")
                 .timeout(5000)
-                .show().unwrap()
+                .show().unwrap();
                 /*
                 .wait_for_action({|action|
                     match action {
