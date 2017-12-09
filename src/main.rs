@@ -13,8 +13,6 @@ extern crate serde_derive;
 extern crate regex;
 extern crate yaml_rust;
 
-extern crate notify_rust;
-
 use std::fs::File;
 use std::io::Read;
 use std::sync::mpsc;
@@ -520,37 +518,6 @@ fn read_config() -> yaml_rust::Yaml {
     config.clone()
 }
 
-fn notification_thread(receiver: mpsc::Receiver<String>) {
-    std::thread::spawn(move || {
-        loop {
-            let body = match receiver.recv() {
-                Ok(msg) => msg,
-                Err(_) => String::from("")
-            };
-
-            notify_rust::Notification::new()
-                .summary("New message")
-                .body(&body[..])
-                .icon("email")
-                .timeout(5000)
-                .show().unwrap()
-                .wait_for_action({|action|
-                    match action {
-                        "default" => {println!("you clicked \"default\"")},
-                        "clicked" => {println!("that was correct")},
-                        // here "__closed" is a hardcoded keyword
-                        "__closed" => {println!("the notification was closed")},
-                        _ => ()
-                    }
-                });
-
-            // Prevent multiple notifications filling up too quickly
-            let five_secs = std::time::Duration::from_millis(5000);
-            std::thread::sleep(five_secs);
-        }
-    });
-}
-
 fn message_thread(message_fetcher: Arc<Mutex<MessageHandler>>, mut message_store: MessageStore, message_sender: mpsc::Sender<MessageStore>) {
     std::thread::spawn(move || {
         loop {
@@ -660,8 +627,6 @@ fn main() {
         room_thread(message_fetcher.clone(), rx_room_id);
 
         outgoing_message_thread(message_fetcher.clone(), rx_send_message);
-
-        notification_thread(rx_notification);
     }
 
     // let mut window_clone = window.clone();
