@@ -4,13 +4,15 @@ rust:
 cache: cargo
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get -y install dbus libdbus-1-dev libdbus-glib-1-dev libdbusmenu-gtk3-dev libcogl-pango-dev libpango1.0-dev libatk1.0-dev libatkmm-1.6-dev
   - sudo wget http://win32builder.gnome.org/$LATEST_WIN64_GTK.zip
   - sudo mkdir /opt/gtkwin
   - sudo unzip $LATEST_WIN64_GTK.zip -d /opt/gtkwin
+  - sudo chmod -R 777 /opt/gtkwin
   - cd /opt/gtkwin
   - find -name '*.pc' | while read pc; do sed -e "s@^prefix=.*@prefix=$PWD@" -i "$pc"; done
+  - sudo apt-get -qq update
+  - sudo apt-get -qq -y install dbus libdbus-1-dev libdbus-glib-1-dev libdbusmenu-gtk3-dev libcogl-pango-dev libpango1.0-dev libatk1.0-dev libatkmm-1.6-dev mingw-w64 mingw-w64-x86-64-dev
+  - cd /home/travis/build/seanr707/gitter_gtk/target
 
 script:
   - rustup target add x86_64-pc-windows-gnu

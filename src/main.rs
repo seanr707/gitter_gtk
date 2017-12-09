@@ -1,6 +1,7 @@
 #![feature(use_extern_macros)]
 #![feature(underscore_lifetimes)]
 #![feature(drain_filter)]
+#![windows_subsystem = "windows"]
 extern crate gtk;
 
 extern crate curl;
