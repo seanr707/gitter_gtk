@@ -6,6 +6,10 @@ linker = "gcc"
 ar = "arm-linux-gnueabihf-ar"
 linker = "arm-linux-gnueabihf-gcc"
 
+[target.x86_64-apple-darwin]
+ar = "ar"
+linker = "clang"
+
 [target.x86_64-pc-windows-gnu]
 ar = "x86_64-w64-mingw32-ar"
 linker = "x86_64-w64-mingw32-gcc"
