@@ -12,5 +12,5 @@ serde = "1.0.20"
 yaml-rust = "0.3.*"
 
 [dependencies.gtk]
-version = "0.2.0"
+version = "0.3.0"
 features = ["v3_10"]
