@@ -13,6 +13,7 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get -qq -y install dbus libdbus-1-dev libdbus-glib-1-dev libdbusmenu-gtk3-dev libcogl-pango-dev libpango1.0-dev libatk1.0-dev libatkmm-1.6-dev mingw-w64 mingw-w64-x86-64-dev libgtk-3-dev
   - cd /home/travis/build/seanr707/gitter_gtk
+  - pkg_config
 
 script:
   - rustup target add x86_64-pc-windows-gnu
