@@ -17,7 +17,7 @@ install:
   - SET PATH=C:\Users\appveyor\.cargo\bin;C:\msys64\mingw%BITS%\bin;%PATH%;C:\msys64\usr\bin
   - rustc -Vv
   - cargo -Vv
-  - pacman --noconfirm -S mingw-w64-%ARCH%-gtk3 curl
+  - pacman --noconfirm -S mingw-w64-%ARCH%-gtk3 curl autoconf git libcurl-devel libcurl man vim binutils gcc make automake libtool pkg-config
 
 build_script:
   - echo paths = ["."] > .cargo\config
