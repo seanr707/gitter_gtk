@@ -16,10 +16,9 @@ install:
   - pacman --noconfirm -S mingw-w64-%ARCH%-gtk3
 
 build_script:
-  - mkdir .cargo
   - echo paths = ["."] > .cargo\config
-  - git clone -q --depth 50 -b build/windows https://github.com/seanr707/gitter_gtk
-  - cd gitter_gtk
+  # - git clone -q --depth 50 -b build/windows https://github.com/seanr707/gitter_gtk
+  - cd C:\projects\gitter-gtk
   - cargo build --release
 
 test: false
