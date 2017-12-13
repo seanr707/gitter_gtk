@@ -14,7 +14,7 @@ install:
   - IF "%BITS%" == "64" SET ARCH=x86_64
   - curl -sSf -o rustup-init.exe https://win.rustup.rs
   - rustup-init.exe --default-host "%ARCH%-pc-windows-gnu" --default-toolchain %RUST% -y
-  - SET PATH=C:\Users\appveyor\.cargo\bin;C:\msys64\mingw%BITS%\bin;%PATH%;C:\msys64\usr\bin
+  # - SET PATH=C:\Users\appveyor\.cargo\bin;C:\msys64\mingw%BITS%\bin;%PATH%;C:\msys64\usr\bin
   - rustc -Vv
   - cargo -Vv
   - pacman --noconfirm --needed -S mingw-w64-%ARCH%-gtk3 curl autoconf git libcurl-devel libcurl man vim binutils gcc make automake libtool pkg-config
