@@ -1,7 +1,7 @@
 environment:
   matrix:
-    - RUST: nightly
-      BITS: 32
+    # - RUST: nightly
+    # BITS: 32
     - RUST: nightly
       BITS: 64
 
