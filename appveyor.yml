@@ -32,20 +32,20 @@ after_build:
   - ls C:\msys64\mingw%BITS%\bin
   - ls C:\msys64\mingw%BITS%\share
   - ls /
-  #- mkdir final-release
-  #- cp target/release/*.exe final-release
-  #- cp /msys64/mingw%BITS%/bin/*.dll final-release
-  #- mkdir -p final-release/share/glib-2.0/schemas
-  #- mkdir final-release/share/icons
-  #- cp /msys64/mingw%BITS%/share/glib-2.0/schemas/* final-release/share/glib-2.0/schemas
-  #- cp -r /msys64/mingw%BITS%/share/icons/* final-release/share/icons
-  #- 7z a gitter-gtk-win%BITS%.zip final-release
-  # - appveyor PushArtifact C:\projects\gitter-gtk\target\release\gitter_gtk
+  - mkdir final-release
+  - cp target\release\*.exe final-release
+  - cp C:\msys64\mingw%BITS%\bin\*.dll final-release
+  - mkdir -p final-release\share\glib-2.0\schemas
+  - mkdir final-release\share\icons
+  - cp C:\msys64\mingw%BITS%\share\glib-2.0\schemas\* final-release\share\glib-2.0\schemas
+  - cp -r C:\msys64\mingw%BITS%\share\icons\* final-release\share\icons
+  - 7z a gitter-gtk-win%BITS%.zip final-release
+  - appveyor PushArtifact C:\projects\gitter-gtk\target\release\gitter_gtk
 
 test: false
 
 artifacts:
-  - path: target/release/gitter_gtk.exe
+  - path: target\release\gitter_gtk.exe
     name: gitter_gtk
 
 deploy:
