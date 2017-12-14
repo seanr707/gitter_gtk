@@ -36,10 +36,10 @@ after_build:
   - cp target/release/*.exe final-release
   - cp /mingw%BITS%/bin/*.dll final-release
   # Not working #- mkdir -p final-release/share/glib-2.0/schemas
-  - mkdir final-release/share
-  - mkdir final-release/share/glib-2.0
-  - mkdir final-release/share/glib-2.0/schemas
-  - mkdir final-release/share/icons
+  - mkdir final-release\share
+  - mkdir final-release\share\glib-2.0
+  - mkdir final-release\share\glib-2.0\schemas
+  - mkdir final-release\share\icons
   - cp /mingw%BITS%/share/glib-2.0/schemas/* final-release/share/glib-2.0/schemas
   - cp -r /mingw%BITS%\share\icons\* final-release\share\icons
   - 7z a gitter-gtk-win%BITS%.zip final-release
