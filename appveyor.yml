@@ -27,10 +27,11 @@ build_script:
 
 after_build:
   - appveyor PushArtifact ./target/release/gitter_gtk.exe
-  - ls /msys64
-  - ls /msys64/mingw%BITS%
-  - ls /msys64/mingw%BITS%/bin
-  - ls /msys64/mingw%BITS%/share
+  - ls C:\msys64\
+  - ls C:\msys64\mingw%BITS%
+  - ls C:\msys64\mingw%BITS%\bin
+  - ls C:\msys64\mingw%BITS%\share
+  - ls /
   #- mkdir final-release
   #- cp target/release/*.exe final-release
   #- cp /msys64/mingw%BITS%/bin/*.dll final-release
