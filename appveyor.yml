@@ -26,11 +26,7 @@ build_script:
   - cargo build --release
 
 after_build:
-  - ls
-  - ls C:\Users\appveyor
-  - ls target
-  - ls target/release
-  - appveyor PushArtifact ./target/release/gitter_gtk
+  - appveyor PushArtifact ./target/release/gitter_gtk.exe
   # - appveyor PushArtifact C:\projects\gitter-gtk\target\release\gitter_gtk
 
 test: false
