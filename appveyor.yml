@@ -40,7 +40,7 @@ after_build:
   - cp C:\msys64\mingw%BITS%\share\glib-2.0\schemas\* final-release\share\glib-2.0\schemas
   - cp -r C:\msys64\mingw%BITS%\share\icons\* final-release\share\icons
   - 7z a gitter-gtk-win%BITS%.zip final-release
-  - appveyor PushArtifact C:\projects\gitter-gtk\target\release\gitter_gtk
+  - appveyor PushArtifact gitter-gtk-win%BITS%.zip
 
 test: false
 
