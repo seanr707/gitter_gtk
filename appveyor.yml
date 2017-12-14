@@ -33,12 +33,12 @@ after_build:
   - ls C:\msys64\mingw%BITS%\share
   - ls /
   - mkdir final-release
-  - cp target\release\*.exe final-release
-  - cp C:\msys64\mingw%BITS%\bin\*.dll final-release
-  - mkdir -p final-release\share\glib-2.0\schemas
-  - mkdir final-release\share\icons
-  - cp C:\msys64\mingw%BITS%\share\glib-2.0\schemas\* final-release\share\glib-2.0\schemas
-  - cp -r C:\msys64\mingw%BITS%\share\icons\* final-release\share\icons
+  - cp target/release/*.exe final-release
+  - cp /mingw%BITS%/bin/*.dll final-release
+  - mkdir -p final-release/share/glib-2.0/schemas
+  - mkdir final-release/share/icons
+  - cp /mingw%BITS%/share/glib-2.0/schemas/* final-release/share/glib-2.0/schemas
+  - cp -r /mingw%BITS%\share\icons\* final-release\share\icons
   - 7z a gitter-gtk-win%BITS%.zip final-release
   - appveyor PushArtifact gitter-gtk-win%BITS%.zip
 
