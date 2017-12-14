@@ -8,6 +8,7 @@ environment:
 cache:
   # - C:\msys64\mingw64
   - C:\Users\appveyor\.cargo
+  - C:\projects\gitter-gtk\target
 
 install:
   - IF "%BITS%" == "32" SET ARCH=i686
