@@ -11,6 +11,7 @@ cache:
   - C:\projects\gitter-gtk\target
 
 install:
+  - SET APPVEYOR_SAVE_CACHE_ON_ERROR=true
   - IF "%BITS%" == "32" SET ARCH=i686
   - IF "%BITS%" == "64" SET ARCH=x86_64
   - curl -sSf -o rustup-init.exe https://win.rustup.rs
@@ -25,15 +26,19 @@ build_script:
   - cargo build --release
 
 after_build:
-  - appveyor PushArtifact target/release/gitter_gtk
-  - appveyor PushArtifact C:\projects\gitter-gkt\target\release\gitter_gtk
+  - ls
+  - ls C:\Users\appveyor
+  - ls target
+  - ls target/release
+  - appveyor PushArtifact ./target/release/gitter_gtk
+  # - appveyor PushArtifact C:\projects\gitter-gtk\target\release\gitter_gtk
 
 test: false
 
 artifacts:
   - path: target/release/gitter_gtk
     name: gitter_gtk-win%BITS%
-  - path: C:\projects\gitter-gkt\target\release\gitter_gtk
+  - path: C:\projects\gitter-gtk\target\release\gitter_gtk
     name: gitter_gtk-win%BITS%
 
 deploy:
