@@ -6,7 +6,7 @@ environment:
       BITS: 64
 
 cache:
-  - C:\msys64
+  - C:\msys64\mingw64
   - C:\Users\appveyor\.cargo
 
 install:
@@ -24,3 +24,20 @@ build_script:
   - cargo build --release
 
 test: false
+
+artifacts:
+  - path: target/release/gitter_gtk
+    name: gitter_gtk-win%BITS%
+
+deploy:
+  release: gitter_gtk-win64-dev-build$(appveyor_build_version)
+  description: 'Release description'
+  provider: GitHub
+  auth_token:
+    secure: "%GITHUB_TOKEN%" # your encrypted token from GitHub
+  artifact: gitter_gtk-win%BITS%            # upload artifact
+  draft: true
+  prerelease: true
+  on:
+    branch: build/win64-dev
+    appveyor_repo_tag: true
