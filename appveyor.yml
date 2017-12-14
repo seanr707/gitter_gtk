@@ -23,10 +23,16 @@ build_script:
   - cd C:\projects\gitter-gtk
   - cargo build --release
 
+after_build:
+  - appveyor PushArtifact target/release/gitter_gtk
+  - appveyor PushArtifact C:\projects\gitter-gkt\target\release\gitter_gtk
+
 test: false
 
 artifacts:
   - path: target/release/gitter_gtk
+    name: gitter_gtk-win%BITS%
+  - path: C:\projects\gitter-gkt\target\release\gitter_gtk
     name: gitter_gtk-win%BITS%
 
 deploy:
@@ -35,7 +41,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: "%GITHUB_TOKEN%" # your encrypted token from GitHub
-  artifact: gitter_gtk-win%BITS%            # upload artifact
+  artifact: gitter_gtk         # upload artifact
   draft: true
   prerelease: true
   on:
