@@ -28,36 +28,54 @@ build_script:
 after_build:
   - appveyor PushArtifact ./target/release/gitter_gtk.exe
   # Prepping for release
-  - mkdir gitter-gtk-win%BITS$
-  - cp target/release/*.exe gitter-gtk-win%BITS$
+  - mkdir gitter-gtk-win%BITS%
+  - cp target/release/*.exe gitter-gtk-win%BITS%
   # Moving mingw DLLs into release folder
-  - cp /mingw%BITS%/bin/*.dll gitter-gtk-win%BITS$
+  - cp /mingw%BITS%/bin/*.dll gitter-gtk-win%BITS%
   # Creating release files to package GTK3 in release
-  - mkdir gitter-gtk-win%BITS$\share
-  - mkdir gitter-gtk-win%BITS$\share\glib-2.0
-  - mkdir gitter-gtk-win%BITS$\share\glib-2.0\schemas
-  - mkdir gitter-gtk-win%BITS$\share\icons
-  - cp /mingw%BITS%/share/glib-2.0/schemas/* gitter-gtk-win%BITS$/share/glib-2.0/schemas
-  - cp -r /mingw%BITS%/share/icons/* gitter-gtk-win%BITS$/share/icons
+  - mkdir gitter-gtk-win%BITS%\share
+  - mkdir gitter-gtk-win%BITS%\share\glib-2.0
+  - mkdir gitter-gtk-win%BITS%\share\glib-2.0\schemas
+  - mkdir gitter-gtk-win%BITS%\share\icons
+  - cp /mingw%BITS%/share/glib-2.0/schemas/* gitter-gtk-win%BITS%/share/glib-2.0/schemas
+  - cp -r /mingw%BITS%/share/icons/* gitter-gtk-win%BITS%/share/icons
   # Set up folders for themes
   - mkdir gitter-gtk-win%BITS%\share\themes
   - mkdir gitter-gtk-win%BITS%\share\gtk-3.0
+  # Copy for alt theme
+  - cp -R ./gitter-gtk-win%BITS% ./gitter-gtk-win%BITS%-alt-theme
   # Get Windows GTK theme
   - mkdir tmp
   - wget https://dl.opendesktop.org/api/files/downloadfile/id/1467925460/s/f4943e95c53799e0c8852e7c7786ea5d/t/1513266485/Windows10-gtk-20160707.tar.gz
   - mv Windows10*tar.gz ./tmp/
-  - tar -xf tmp/Windows10*tar.gz
-  - tar -xf tmp/Windows10*3.20*tar.gz
-  - cp tmp/Windows10 gitter-gtk-win%BITS%/share/themes/
+  - cd ./tmp
+  - tar -xf Windows10*tar.gz
+  - tar -xf Windows10*3.20*tar.gz
+  - cp -R ./Windows10 ../gitter-gtk-win%BITS%/share/themes/
   # Set up settings to point to theme
   - touch gitter-gtk-win%BITS%/share/gtk-3.0/settings.ini
   - echo [Settings]\n\
     gtk-theme-name = Windows10\n\
     gtk-font-name = Segoe UI 10\n\
     gtk-xft-rgba = rgb > gitter-gtk-win%BITS%/share/gtk-3.0/settings.ini
+  #
+  - cd ..
+  - rm -rf tmp
+  # Get Arc OSX GTK theme
+  - git clone https://github.com/LinxGem33/OSX-Arc-Darker.git  gitter-gtk-win%BITS%-alt-theme/share/themes/OSX-Arc-Darker
+  #
+  - cd ..
+  # Set up settings to point to theme
+  - touch gitter-gtk-win%BITS%-alt-theme/share/gtk-3.0/settings.ini
+  - echo [Settings]\n\
+    gtk-theme-name = OSX-Arc-Darker\n\
+    gtk-font-name = Calibri 10\n\
+    gtk-xft-rgba = rgb > gitter-gtk-win%BITS%-alt-theme/share/gtk-3.0/settings.ini
   # Zipping up files for release
-  - 7z a gitter-gtk-win%BITS%.zip gitter-gtk-win%BITS$
+  - 7z a gitter-gtk-win%BITS%.zip gitter-gtk-win%BITS%
   - appveyor PushArtifact gitter-gtk-win%BITS%.zip
+  - 7z a gitter-gtk-win%BITS%-alt-theme.zip gitter-gtk-win%BITS%-alt-theme
+  - appveyor PushArtifact gitter-gtk-win%BITS%-alt-theme.zip
 
 test: false
 
