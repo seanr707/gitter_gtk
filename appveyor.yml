@@ -77,7 +77,7 @@ deploy:
   description: 'Release description'
   provider: GitHub
   auth_token:
-    secure: "%GITHUB_TOKEN%" # your encrypted token from GitHub
+    secure: %GITHUB_TOKEN% # your encrypted token from GitHub
   artifact: gitter_gtk         # upload artifact
   draft: true
   appveyor_repo_tag: true
