@@ -48,15 +48,15 @@ after_build:
   - git clone https://github.com/B00merang-Project/Windows-10.git ./gitter-gtk-win%BITS%/share/themes/Windows10
   # Set up settings to point to theme
   - touch gitter-gtk-win%BITS%/share/gtk-3.0/settings.ini
-  - echo "[Settings]"\n\
+  - ps: echo "[Settings]"\n\
     "gtk-theme-name = Windows10"\n\
-    "gtk-font-name = Calibri 10"\n\
-    "gtk-xft-rgba = rgb" > gitter-gtk-win%BITS%-alt-theme/share/gtk-3.0/settings.ini
+    "gtk-font-name = Segoe UI 10"\n\
+    "gtk-xft-rgba = rgb" > gitter-gtk-win%BITS%/share/gtk-3.0/settings.ini
   # Get Arc OSX GTK theme
   - git clone https://github.com/LinxGem33/OSX-Arc-Darker.git  gitter-gtk-win%BITS%-alt-theme/share/themes/OSX-Arc-Darker
   # Set up settings to point to theme
   - touch gitter-gtk-win%BITS%-alt-theme/share/gtk-3.0/settings.ini
-  - echo "[Settings]"\n\
+  - ps: echo "[Settings]"\n\
     "gtk-theme-name = OSX-Arc-Darker"\n\
     "gtk-font-name = Calibri 10"\n\
     "gtk-xft-rgba = rgb" > gitter-gtk-win%BITS%-alt-theme/share/gtk-3.0/settings.ini
