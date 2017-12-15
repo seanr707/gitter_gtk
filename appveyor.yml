@@ -45,26 +45,15 @@ after_build:
   # Copy for alt theme
   - cp -R ./gitter-gtk-win%BITS% ./gitter-gtk-win%BITS%-alt-theme
   # Get Windows GTK theme
-  - mkdir tmp
-  - wget https://dl.opendesktop.org/api/files/downloadfile/id/1467925460/s/f4943e95c53799e0c8852e7c7786ea5d/t/1513266485/Windows10-gtk-20160707.tar.gz
-  - mv Windows10*tar.gz ./tmp/
-  - cd ./tmp
-  - tar -xf Windows10*tar.gz
-  - tar -xf Windows10*3.20*tar.gz
-  - cp -R ./Windows10 ../gitter-gtk-win%BITS%/share/themes/
+  - git clone https://github.com/B00merang-Project/Windows-10.git ./gitter-gtk-win%BITS%/share/themes/Windows10
   # Set up settings to point to theme
   - touch gitter-gtk-win%BITS%/share/gtk-3.0/settings.ini
   - echo [Settings]\n\
-    gtk-theme-name = Windows10\n\
+    gtk-theme-name = Windows 10 Default\n\
     gtk-font-name = Segoe UI 10\n\
     gtk-xft-rgba = rgb > gitter-gtk-win%BITS%/share/gtk-3.0/settings.ini
-  #
-  - cd ..
-  - rm -rf tmp
   # Get Arc OSX GTK theme
   - git clone https://github.com/LinxGem33/OSX-Arc-Darker.git  gitter-gtk-win%BITS%-alt-theme/share/themes/OSX-Arc-Darker
-  #
-  - cd ..
   # Set up settings to point to theme
   - touch gitter-gtk-win%BITS%-alt-theme/share/gtk-3.0/settings.ini
   - echo [Settings]\n\
