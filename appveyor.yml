@@ -77,7 +77,7 @@ deploy:
   description: "Windows Release of GitterGTK.\nEach package contains all GTK DLLs and a theme. (Alt-theme is Arc-OS and default is a Win10 theme)\nThe product has only been minimally tested in Wine, any feedback or bug reports are appreciated."
   provider: GitHub
   auth_token:
-    secure: %GITHUB_TOKEN% # your encrypted token from GitHub
+    secure: $(GITHUB_TOKEN) # your encrypted token from GitHub
   artifact: gitter-gtk-win%BITS%*.zip         # upload artifacts (both zips)
   draft: true
   appveyor_repo_tag: true
